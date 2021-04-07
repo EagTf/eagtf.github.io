@@ -89,24 +89,52 @@
     <div class="cards">
         <div class="card statistic" style="width: 18rem;">
             <div class="card-body">
-                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;">15+</h1>
-                <p style="font-weight: bold !important;font-size: 20px !important;">servers</p>
+                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;" id="server"></h1>
+                <p style="font-weight: bold !important;font-size: 20px !important;">Servers</p>
             </div>
         </div>
         <div class="card statistic" style="width: 18rem;">
             <div class="card-body">
-                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;">100+</h1>
+                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;" id="users"></h1>
                 <p style="font-weight: bold !important;font-size: 20px !important;">users</p>
             </div>
         </div>
         <div class="card statistic" style="width: 18rem;">
             <div class="card-body">
-                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;">500+</h1>
+                <p class="card-title" style="font-size: 50px !important;line-height: 15px !important;letter-spacing: -0.06em !important;font-weight: bold !important;" id="channels"></h1>
                 <p style="font-weight: bold !important;font-size: 20px !important;">channels</p>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+
+    const url = "http://134.255.234.14:3000/api";
+        fetch(url, {
+            method: 'get',
+            headers : {
+                contentType: 'application/json',
+            },
+            contentType: 'application/json',
+            }
+
+        ).then((response) => {
+        return response.json()
+        
+    }).then((json) => {
+        let server = json["servers"]
+        let channel = json["channels"]
+        let users = json["users"]      
+        const serverP = document.getElementById("server");
+        const channelP = document.getElementById("channels");
+        const userP = document.getElementById("users");
+       serverP.innerHTML = server;
+       channelP.innerHTML = channel; 
+       userP.innerHTML = users; 
+    });
+   
+</script>
 <div class="page_end">
     <div class="start">
         <div class="card">
